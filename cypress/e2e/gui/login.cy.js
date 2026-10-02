@@ -9,3 +9,4 @@ describe('Login', () => {
     cy.get('.qa-user-avatar').should('be.visible')
   })
 })
+
