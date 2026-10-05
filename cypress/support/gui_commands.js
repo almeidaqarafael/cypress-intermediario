@@ -37,8 +37,16 @@ Cypress.Commands.add('logout', () => {
 Cypress.Commands.add('gui_criarProjeto', projeto => {
   cy.visit('/projects/new')
 
-  cy.get('#project_name').type(projeto.nomeProjeto)
+  cy.get('#project_name').type(projeto.nome)
   cy.get('#project_description').type(projeto.descricao)
   cy.get('.qa-initialize-with-readme-checkbox').check()
   cy.contains('Create project').click()
+});
+
+Cypress.Commands.add('gui_criarIssue', issue => {
+  cy.visit(`/${Cypress.env('operador')}/${issue.projeto.nome}/issues/new`)
+
+  cy.get('#issue_title').type(issue.titulo)
+  cy.get('#issue_description').type(issue.descricao)
+  cy.contains('Submit issue').click()
 });
